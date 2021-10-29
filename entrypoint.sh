@@ -54,7 +54,7 @@ sh -c "cp .env.${ENVTYPE} .env" \
               --acl public-read \
               --cache-control ${CACHEAGE} \
               ${ENDPOINT_APPEND} $*" \
-&& sh -c "chown -R ubuntu:ubuntu ~/actions-runner"
+&& sh -c "chown -R ubuntu:docker ~/actions-runner"
 
 SUCCESS=$?
 
