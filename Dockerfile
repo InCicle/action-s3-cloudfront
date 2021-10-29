@@ -12,6 +12,7 @@ LABEL maintainer="Jean Lescure <opensource@jeanlescure.io>"
 
 ENV PATH /github/workspace/node_modules/.bin:$PATH
 ADD entrypoint.sh /entrypoint.sh
+RUN useradd -u 8877 ubuntu
 USER ubuntu
 RUN chmod +x /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
