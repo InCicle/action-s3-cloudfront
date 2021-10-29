@@ -1,3 +1,5 @@
+USER ubuntu
+
 FROM jeanlescure/node-awscli:latest
 
 LABEL "com.github.actions.name"="React Deploy to S3"
