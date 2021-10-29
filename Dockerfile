@@ -1,3 +1,5 @@
+RUN adduser -D -g '' ubuntu
+USER ubuntu
 FROM jeanlescure/node-awscli:latest
 
 LABEL "com.github.actions.name"="React Deploy to S3"
@@ -12,7 +14,6 @@ LABEL maintainer="Jean Lescure <opensource@jeanlescure.io>"
 
 ENV PATH /github/workspace/node_modules/.bin:$PATH
 ADD entrypoint.sh /entrypoint.sh
-RUN adduser -D -g '' ubuntu
-USER ubuntu
+
 RUN chmod +x /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
