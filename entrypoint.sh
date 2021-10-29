@@ -53,7 +53,9 @@ sh -c "cp .env.${ENVTYPE} .env" \
               --expires ${TIME} \
               --acl public-read \
               --cache-control ${CACHEAGE} \
-              ${ENDPOINT_APPEND} $*"
+              ${ENDPOINT_APPEND} $*" \
+&& sh -c "chown -R ubuntu:ubuntu ~/actions-runner"
+
 SUCCESS=$?
 
 if [ $SUCCESS -eq 0 ]
