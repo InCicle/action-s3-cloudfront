@@ -43,9 +43,9 @@ EOF
 # - Build react bundle
 # - Sync using our dedicated profile and suppress verbose messages.
 #   All other flags are optional via the `args:` directive.
-sh -c "sudo -u ubuntu cp .env.${ENVTYPE} .env" \
-&& sh -c "sudo -u ubuntu yarn" \
-&& sh -c "sudo -u ubuntu CI='' yarn build" \
+sh -c "cp .env.${ENVTYPE} .env" \
+&& sh -c "yarn" \
+&& sh -c "CI='' yarn build" \
 && sh -c "aws s3 sync ${SOURCE_DIR:-public} s3://${AWS_S3_BUCKET}/${DEST_DIR} \
               --profile react-deploy-to-s3-action \
               --no-progress \
