@@ -1,6 +1,8 @@
+
+FROM jeanlescure/node-awscli:latest
+
 RUN adduser -D -g '' ubuntu
 USER ubuntu
-FROM jeanlescure/node-awscli:latest
 
 LABEL "com.github.actions.name"="React Deploy to S3"
 LABEL "com.github.actions.description"="Build a React.js web app and sync to an AWS S3 repository"
