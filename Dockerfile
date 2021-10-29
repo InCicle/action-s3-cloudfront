@@ -13,13 +13,12 @@ LABEL repository="https://github.com/jeanlescure/react-deploy-to-s3-action"
 LABEL homepage="https://jeanlescure.io/"
 LABEL maintainer="Jean Lescure <opensource@jeanlescure.io>"
 
-RUN adduser -D -g '' ubuntu
-USER root
+
 
 ENV PATH /github/workspace/node_modules/.bin:$PATH
 ADD entrypoint.sh /entrypoint.sh
 
 RUN chmod +x /entrypoint.sh
-USER ubuntu
+
 
 ENTRYPOINT ["/entrypoint.sh"]
