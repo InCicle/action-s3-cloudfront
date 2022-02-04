@@ -11,6 +11,8 @@ LABEL homepage="https://jeanlescure.io/"
 LABEL maintainer="Jean Lescure <opensource@jeanlescure.io>"
 
 ENV PATH /github/workspace/node_modules/.bin:$PATH
+ENV NODE_VERSION=16.13.2
+ENV YARN_VERSION=1.22.17
 ADD entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
