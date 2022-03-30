@@ -40,6 +40,9 @@ ${AWS_REGION}
 text
 EOF
 
+sh -c "echo "//npm.pkg.github.com/:_authToken=${NPMRC_KEY}" >> ~/.npmrc"
+
+
 # - Install dependencies
 # - Build react bundle
 # - Sync using our dedicated profile and suppress verbose messages.
