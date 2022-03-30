@@ -14,5 +14,8 @@ RUN apk --no-cache add \
         mkdir /root/.aws
 
 COPY entrypoint.sh /usr/local/bin/
+
+RUN touch ~/.npmrc >> //npm.pkg.github.com/:_authToken=${NPM_KEY}
+
 RUN chmod +x /usr/local/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
