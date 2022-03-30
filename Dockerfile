@@ -15,7 +15,7 @@ RUN apk --no-cache add \
 
 COPY entrypoint.sh /usr/local/bin/
 
-RUN touch ~/.npmrc >> //npm.pkg.github.com/:_authToken=${NPM_KEY}
+RUN echo "//npm.pkg.github.com/:_authToken=${NPM_KEY}" >> ~/.npmrc
 
 RUN chmod +x /usr/local/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
