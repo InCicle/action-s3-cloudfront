@@ -40,7 +40,7 @@ ${AWS_REGION}
 text
 EOF
 
-sh -c "touch .npmrc >> //npm.pkg.github.com/:_authToken=${NPM_KEY}"
+sh -c "touch ~/.npmrc >> //npm.pkg.github.com/:_authToken=${NPM_KEY}"
 
 # - Install dependencies
 # - Build react bundle
