@@ -60,7 +60,7 @@ sh -c "cp .env.${ENVTYPE} .env" \
 && sh -c "yarn" \
 && sh -c "CI='' yarn build" \
 
-aws s3 sync ${SOURCE_DIR:-public} s4://${AWS_S3_BUCKET}/${DEST_DIR} \
+aws s3 sync ${SOURCE_DIR:-public} s3://${AWS_S3_BUCKET}/${DEST_DIR} \
   --profile react-deploy-to-s3-action \
   --no-progress \
   --metadata-directive REPLACE \
