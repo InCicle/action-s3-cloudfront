@@ -44,17 +44,31 @@ EOF
 # - Build react bundle
 # - Sync using our dedicated profile and suppress verbose messages.
 #   All other flags are optional via the `args:` directive.
-sh -c "cp .env.${ENVTYPE} .env" \
-&& sh -c "yarn" \
-&& sh -c "CI='' yarn build" \
-&& sh -c "aws s3 sync ${SOURCE_DIR:-public} s3://${AWS_S3_BUCKET}/${DEST_DIR} \
-              --profile react-deploy-to-s3-action \
-              --no-progress \
-              --metadata-directive REPLACE \
-              --expires ${TIME} \
-              --acl public-read \
-              --cache-control ${CACHEAGE} \
-              ${ENDPOINT_APPEND} $*"
+# sh -c "cp .env.${ENVTYPE} .env" \
+# && sh -c "yarn" \
+# && sh -c "CI='' yarn build" \
+# && sh -c "aws s3 sync ${SOURCE_DIR:-public} s3://${AWS_S3_BUCKET}/${DEST_DIR} \
+#               --profile react-deploy-to-s3-action \
+#               --no-progress \
+#               --metadata-directive REPLACE \
+#               --expires ${TIME} \
+#               --acl public-read \
+#               --cache-control ${CACHEAGE} \
+#               ${ENDPOINT_APPEND} $*"
+
+cp .env.${ENVTYPE} .env \
+&& yarn install \
+&& CI='' yarn build
+
+aws s3 sync ${SOURCE_DIR:-public} s4://${AWS_S3_BUCKET}/${DEST_DIR} \
+  --profile react-deploy-to-s3-action \
+  --no-progress \
+  --metadata-directive REPLACE \
+  --expires ${TIME} \
+  --acl public-read \
+  --cache-control ${CACHEAGE} \
+  ${ENDPOINT_APPEND} $*
+
 
 SUCCESS=$?
 
