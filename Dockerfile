@@ -1,6 +1,6 @@
 FROM node:18.20.4-alpine
 
-RUN apk --no-cache add \
+RUN apk --no-cache add \ 
         bash \
         curl \
         less \
@@ -9,9 +9,11 @@ RUN apk --no-cache add \
         git \
         python3 \
         py3-pip \
-        && python3 -m venv /opt/venv \
-        && . /opt/venv/bin/activate \
-        && pip install --upgrade pip awscli s3cmd \
-        && mkdir /root/.aws
+        py-pip && \
+        pip install --upgrade pip awscli s3cmd && \
+        mkdir /root/.aws
 
-ENV PATH="/opt/venv/bin:$PATH"
+COPY entrypoint.sh /usr/local/bin/
+
+RUN chmod +x /usr/local/bin/entrypoint.sh
+ENTRYPOINT ["entrypoint.sh"]
