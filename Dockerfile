@@ -9,8 +9,9 @@ RUN apk --no-cache add \
         git \
         python3 \
         py3-pip \
-        py-pip && \
-        pip install --upgrade pip awscli s3cmd && \
+        py-pip \
+        aws-cli \
+        s3cmd && \
         mkdir /root/.aws
 
 COPY entrypoint.sh /usr/local/bin/
