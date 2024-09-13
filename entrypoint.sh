@@ -56,9 +56,9 @@ EOF
 #               --cache-control ${CACHEAGE} \
 #               ${ENDPOINT_APPEND} $*"
 
-cp .env.${ENVTYPE} .env \
-&& yarn install \
-&& CI='' yarn build
+sh -c "cp .env.${ENVTYPE} .env" \
+&& sh -c "yarn" \
+&& sh -c "CI='' yarn build" \
 
 aws s3 sync ${SOURCE_DIR:-public} s4://${AWS_S3_BUCKET}/${DEST_DIR} \
   --profile react-deploy-to-s3-action \
